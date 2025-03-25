@@ -12,3 +12,5 @@ joblib
 nltk
 textblob
 wordcloud
+xlsxwriter
+io
