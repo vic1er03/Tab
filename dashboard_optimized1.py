@@ -1203,17 +1203,99 @@ def main():
             st.write("""Ce modèle prédit si un donneur est éligible ou non en fonction de ses caractéristiques médicales et personnelles.
             Remplissez les informations ci-dessous pour obtenir une prédiction.
         """)
-            df=pd.read_csv("Challenge_dataset_traité.csv")
+            #df=pd.read_csv(patr)
+            professions = ["Etudiant (e)", "Sans Emplois", "Tailleur", "Militaire", "Bijoutier", "Couturier","Jeune cadre", "Commerçant (e)", "Mototaximan", "Agent commercial", "Elève","Chauffeur", "COIFFEUSE", "Mécanicien", "Cultuvateur", "Fonctionnaires", "Marin", 
+    "Infirmièr", "Footballeur", "Agent de securite", "Electronicien", "Électricien", 
+    "Élève", "Sportifs", "Personnel de sante", "Formateur", "Trader indep", 
+    "Chargé de clientèle", "CONTROLEUR DES DOUANES", "ASSISTANT DE  DIRECTION", 
+    "STAGIAIRE", "Angent de securité", "Pasteur", "S1p", "Plombier", "Security officer", 
+    "BUSINESMAN", "Footballeur ", "Technicien supérieur d’agriculture", "Vigil", 
+    "Coordiste", "PEINTRE", "ADMINISTRATEUR DES HOPITAUX", "chauffeur", "Hôtelier ", 
+    "Logisticien transport", "CHAUDRONIER", "Decorateur Baptiment", "Tâcheron", 
+    "Cuisinier", "Imprimeur ", "missionnaire", "Patissier", "Docker", "Réalisateur ", 
+    "assureur", "CHAUFFEUR ", "LAVEUR", "Coach kuine", "Conducteur", "Technicien ", 
+    "Conseiller client", "Entrepreneur", "Magasinier ", "constructeur en bâtiment", 
+    "Calier", "SOUDEUR", "AGENT D'APPUI PHARMICIE", "CHAUFFEUR", "Intendant ", 
+    "conducteurs d'engins genie civil", "Chauffeur ", "Assistant transit", 
+    "Agent des ressourses humaines", "Declarant en Douane", "Menuisier", "AIDE COMPTABLE", 
+    "TECHNICIEN GENIE CIVIL", "Transitaire", "Coiffeur", "Ménagère", "VENDEUSE", 
+    "médecin", "couturière", "Pompiste", "EDUCATEUR DES ENFANTS", "Hoteliere", 
+    "OUVRIER", "Débrouillard", "MACHINISTE", "FORREUR", "CASINO", "TECHNICIEN TOPO", 
+    "COUTURIERE", "RAS", "APPRENTI TOLERIE ", "SP", "Développeur en informatique ", 
+    "Sérigraphie", "Estheticien", "Maintenancier industriel ", "Auditeur interne", 
+    "Enseignant (e)", "Agent municipal ", "Tolier", "Agent de banque", "Prestataire de service et consultant sportif", 
+    "Dolker ", "photographe", "Agent d'exploitation", "Cheminot", "ARGENT DE SÉCURITÉ ", 
+    "Secrétaire comptable", "Contractuel d'administration", "Technicien de génie civile", 
+    "Juriste", "Informaticien ", "Technicien en genie civil", "Agent administratif ", 
+    "Comptable", "Laborantin", "Ingénieur génie civil", "Analyste -programmeur", 
+    "Logisticien", "Agent de securité", "Maçon", "Menuisier ", "MENUSIER", "MENUISIER ", 
+    "Plombier", "Bijoutier", "Soudeur", "Peintre", "Chaudronnier", "Électronicien ", 
+    "Electricien", "Machiniste", "Pâtissier ", "Menuisier", "CHAUDRONNIER", 
+    "Technicien génie civil", "Agent technique", "Technicien réseaux télécoms", 
+    "Infographe", "Architecte", "Assistante", "Ménagère", "Commerçant (e)", 
+    "Employé (e)  dans une entreprise", "Agent de sécurité", "Marin", "Débrouillard", 
+    "Personnel de sante", "Comptable", "Enseignant", "Fonctionnaires", "Magasinier", 
+    "Agent commercial", "Technicien", "Informaticien", "Electricien auto", 
+    "Technicien de génie civile", "Technicien d'agriculture", "Technicien en bâtiment", 
+    "Technicien en électricité", "Technicien en mécanique", "Technicien en plomberie", 
+    "Technicien en soudure", "Technicien en informatique", "Technicien en génie civil", 
+    "Technicien en électronique", "Technicien en climatisation", "Technicien en télécoms", 
+    "Technicien en topographie", "Technicien en maintenance", "Technicien en chauffage", 
+    "Technicien en froid", "Technicien en électricité bâtiment", "Technicien en électricité industrielle", 
+    "Technicien en mécanique auto", "Technicien en mécanique industrielle", 
+    "Technicien en plomberie sanitaire", "Technicien en soudure industrielle", 
+    "Technicien en informatique bureautique", "Technicien en informatique réseau", 
+    "Technicien en informatique développement", "Technicien en génie civil bâtiment", 
+    "Technicien en génie civil travaux publics", "Technicien en électronique numérique", 
+    "Technicien en électronique analogique", "Technicien en climatisation centrale", 
+    "Technicien en télécoms réseau", "Technicien en topographie terrestre", 
+    "Technicien en maintenance industrielle", "Technicien en chauffage central", 
+    "Technicien en froid industriel", "Technicien en électricité bâtiment résidentiel", 
+    "Technicien en électricité industrielle lourde", "Technicien en mécanique automobile", 
+    "Technicien en mécanique industrielle lourde", "Technicien en plomberie sanitaire résidentielle", 
+    "Technicien en soudure industrielle lourde", "Technicien en informatique bureautique avancée", 
+    "Technicien en informatique réseau avancé", "Technicien en informatique développement avancé", 
+    "Technicien en génie civil bâtiment avancé", "Technicien en génie civil travaux publics avancés", 
+    "Technicien en électronique numérique avancée", "Technicien en électronique analogique avancée", 
+    "Technicien en climatisation centrale avancée", "Technicien en télécoms réseau avancé", 
+    "Technicien en topographie terrestre avancée", "Technicien en maintenance industrielle avancée", 
+    "Technicien en chauffage central avancé", "Technicien en froid industriel avancé", 
+    "Technicien en électricité bâtiment résidentiel avancé", "Technicien en électricité industrielle lourde avancée", 
+    "Technicien en mécanique automobile avancée", "Technicien en mécanique industrielle lourde avancée", 
+    "Technicien en plomberie sanitaire résidentielle avancée", "Technicien en soudure industrielle lourde avancée", 
+    "Technicien en informatique bureautique expert", "Technicien en informatique réseau expert", 
+    "Technicien en informatique développement expert", "Technicien en génie civil bâtiment expert", 
+    "Technicien en génie civil travaux publics expert", "Technicien en électronique numérique expert", 
+    "Technicien en électronique analogique expert", "Technicien en climatisation centrale expert", 
+    "Technicien en télécoms réseau expert", "Technicien en topographie terrestre expert", 
+    "Technicien en maintenance industrielle expert", "Technicien en chauffage central expert", 
+    "Technicien en froid industriel expert", "Technicien en électricité bâtiment résidentiel expert", 
+    "Technicien en électricité industrielle lourde expert", "Technicien en mécanique automobile expert", 
+    "Technicien en mécanique industrielle lourde expert", "Technicien en plomberie sanitaire résidentielle expert", 
+    "Technicien en soudure industrielle lourde expert"
+]
+            religions = [
+    "Chretien (Catholique)", "Musulman", "Pas Précisé", "Chretien (Protestant )", 
+    "Adventiste", "Non-croyant", "pentecôtiste", "Chretien (Ne de nouveau)", 
+    "Traditionaliste", "BAPTISTE", "pentecôtiste", "Chrétien non précisé", 
+    "pentecotiste", "Chretien (Protestant)", "Musulmane"
+]
+            niveaux_etude = [
+    "Universitaire", "Aucun", "Secondaire", "Primaire", "Pas Précisé"
+]
+            statuts_matrimoniaux = [
+    "Célibataire", "Marié (e)", "veuf (veuve)", "Divorcé(e)"
+]
             # ==============================
             # 📌 FORMULAIRE DE SAISIE
             # ==============================
             with col1:
                 age = st.number_input("Âge", min_value=18, max_value=100, value=30, step=1)
 
-                profession = st.selectbox("Profession",list(df["Profession"].dropna().unique()) )
-                religion = st.selectbox("Religion", list(df["Religion"].dropna().unique()))
-                Niveau_Etude =st.selectbox("Religion", list(df["Niveau_Etude"].dropna().unique()))
-                Statut_Matrimonial= st.selectbox("Religion", list(df["Statut_Matrimonial"].dropna().unique()))
+                profession = st.selectbox("Profession",list(professions) )
+                religion = st.selectbox("Religion", list(religions))
+                Niveau_Etude =st.selectbox("Niveau_Etude", list(niveaux_etude))
+                Statut_Matrimonial= st.selectbox("Statut_Matrimonial", list(statuts_matrimoniaux))
                 # État de santé (Binaire : Oui/Non)
             columns_binary = [
                 "Drepanocytose", "Opere", "Transfusion_Antecedent", "Diabete",
