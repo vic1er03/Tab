@@ -87,7 +87,7 @@ def load_data():
     
     #Charge les données prétraitées à partir des fichiers CSV.
     
-    patr="Challenge_dataset_traité.csv"
+    patr="Challenge_dataset_traité_vrai.csv"
     df_2019 = pd.read_csv(data_2019_path)
     df_volontaire = pd.read_csv(data_volontaire_path)
     df=pd.read_csv(patr)
